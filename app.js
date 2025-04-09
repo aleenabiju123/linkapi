@@ -1,15 +1,16 @@
 var express=require("express");
-require("./db");
+var dotenv=require("dotenv");
 var userRoute=require('./routes/userRoute')
 var productRoute=require('./routes/productRoute')
 var app=express();
-
-
+dotenv.config();
+require("./db");
+var port=process.env.port;
 
 
 app.use(express.json());
-var port=4000;
- 
+
+
 app.use('/api1',productRoute)
 app.use('/api',userRoute)
 app.listen(port,(req,res)=>{
